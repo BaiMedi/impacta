@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Impacto del Marketing de Contenidos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h1, h2 {
+            color: #00344B;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e1f5fe;
+            border: 1px solid #81d4fa;
+            border-radius: 5px;
+            color: #0277bd;
+            font-weight: bold;
+        }
+        .cta-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .cta-container p {
+            color: #00344B;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .cta-container a {
+            display: inline-block;
+            background-color: #00DC42;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 15px 25px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .cta-container a:hover {
+            background-color: #00c03a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Simulador de Impacto del Marketing de Contenidos</h1>
+        <p>Completa los datos sobre tus publicaciones y descubre cómo pueden aumentar tu alcance y resultados.</p>
+
+        <form id="content-impact-form">
+            <label for="posts">Número de publicaciones por mes:</label>
+            <input type="number" id="posts" placeholder="Ejemplo: 20">
+
+            <label for="engagement">Tasa de interacción estimada (%):</label>
+            <input type="number" id="engagement" placeholder="Ejemplo: 5">
+
+            <label for="conversion">Porcentaje de conversión de interacción a ventas (%):</label>
+            <input type="number" id="conversion" placeholder="Ejemplo: 10">
+
+            <button type="button" onclick="calculateImpact()">Calcular Impacto</button>
+        </form>
+
+        <div id="result" class="result" style="display: none;"></div>
+
+        <div class="cta-container">
+            <p>¿CAMPO DE JUEGO O MINA DE ORO?</p>
+            <a href="https://klicana.work/ykEi0H" target="_blank">INSCRIBIRME A MISIÓN GESTOR REDES SOCIALES</a>
+        </div>
+    </div>
+
+    <script>
+        function calculateImpact() {
+            const posts = parseInt(document.getElementById("posts").value, 10);
+            const engagement = parseFloat(document.getElementById("engagement").value) / 100;
+            const conversion = parseFloat(document.getElementById("conversion").value) / 100;
+
+            if (isNaN(posts) || isNaN(engagement) || isNaN(conversion) || posts <= 0 || engagement <= 0 || conversion <= 0) {
+                document.getElementById("result").style.display = "block";
+                document.getElementById("result").textContent = "Por favor, completa todos los campos con valores válidos.";
+                return;
+            }
+
+            const interactions = posts * engagement * 100; // Asumimos 100 vistas por publicación
+            const sales = interactions * conversion;
+
+            document.getElementById("result").style.display = "block";
+            document.getElementById("result").innerHTML = `
+                <strong>Impacto estimado del marketing de contenidos:</strong><br>
+                - Interacciones mensuales: ${interactions.toFixed(0)}<br>
+                - Ventas generadas: ${sales.toFixed(0)}<br>
+                <strong>Recomendación:</strong> Incrementa la frecuencia de publicaciones para mejorar tus resultados.
+            `;
+        }
+    </script>
+</body>
+</html>
+
